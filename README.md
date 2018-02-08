@@ -9,11 +9,6 @@ The application is supposed to allow option of:
        - it should allow to optimize passwords to contain particular characters
        - filter unwanted characters out
           - characters only accissible from a generic QWERTY keyboard.
-       - add optional subwords into it (as a separate service)
-          - words from technology/industry
-          - words from particular language
-          //- use some neo4j for that?
-          //- optimal subwords should be taken from a separate microservice
      
 
    
