@@ -3,26 +3,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <!-- TODO: Follow this stuff:
-        view-source:https://v4-alpha.getbootstrap.com/examples/sticky-footer-navbar/ -->
+    <!-- Based on the:
+     view-source:https://v4-alpha.getbootstrap.com/examples/sticky-footer-navbar/ -->
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- TODO: Add favicon <link rel="icon" href="@{/jpgs../favicon.ico"> -->
+    <link rel="icon" th:href="@{/favicon.ico}">
 
-    <title>Index</title>
-
-    <!-- TODO: Use webjars -->
-    <!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" /script -->
+    <title>Gennoe</title>
 
     <!-- Bootstrap CSS -->
-    <link th:href="@{/webjars/bootstrap/4.0.0-alpha.6-1/css/bootstrap.min.css}" rel="stylesheet">
-
-
-<!-- link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" -->
+    <link th:href="@{/webjars/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css}" rel="stylesheet"
+             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+             integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
     <link th:href="@{/css/sticky-footer-navbar.css}" rel="stylesheet">
@@ -61,8 +56,13 @@
         </div>
         <p class="lead" th:text="${@environment.getProperty('gennoeweb.application.description')}">Generate anything.</p>
         <p th:text="${welcome}">Some welcome text here</p>.
-        <p>Result of random code: </p><div th:text="${result}" >RANDOM_STUFF </div>
+        <p>Result of random code (Thymeleaf):
+            <div>
+                <p th:text="${result}" >RANDOM_STUFF</p>
+            </div>
+        </p>
 
+        <p>Result of random code (AJAX):</p>
         <div>
             <p class="generated-value">The generated value is: </p>
         </div>
@@ -80,19 +80,27 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <!-- TODO: Add CDN for local browser -->
-    <script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}" crossorigin="anonymous"></script>
+
+    <!-- It used th:src="@{/webjars/jquery/3.3.1/jquery.min.js}" but this file had different SRI than its equivalent on CDN,
+         for more read: https://stackoverflow.com/questions/48820493/webjars-3-3-1-jquery-min-js-different-from-cdns-3-3-1-jquery-min-js-mismatchin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+            integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
 
     <!-- script>window.jQuery || document.write('script src="/webjars/jquery/3.3.1/jquery.min.js"\/script>')/script> -->
-    <!-- TODO: Add CDN for local browser
-         FIXME: THymeleaf will not work below, rework it with th:text -->
-    <script>window.jQuery || document.write('<script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"><\/script>')</script>
+    <script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"><\/script>')</script>
 
-    <!-- TODO: Add CDN for local browser -->
-    <script th:src="@{/webjars/tether/1.4.3/dist/js/tether.min.js}" crossorigin="anonymous"></script>
+    <script th:src="@{/webjars/tether/1.4.3/dist/js/tether.min.js}"
+            src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.3/js/tether.min.js"
+            integrity="sha256-mIiWebTG82x+OcV3vUA49ffGDIAJ53uC9jflw5/+REs=" crossorigin="anonymous"></script>
 
-    <!-- TODO: Add CDN for local browser -->
-    <script th:src="@{/webjars/bootstrap/4.0.0-alpha.6-1/js/bootstrap.min.js}" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous">></script>
+    <!-- POPPER (PROBABLY NOT NEEDED FOR THIS WERBPAGE -->
+    <script th:src="@{/webjars/popper.js/1.13.0/dist/umd/popper.min.js}"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+    <script th:src="@{/webjars/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js}"
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+            integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script th:src="@{js/ie10-viewport-bug-workaround.js}"></script>
