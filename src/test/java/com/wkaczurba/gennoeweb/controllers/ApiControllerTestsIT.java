@@ -58,8 +58,6 @@ public class ApiControllerTestsIT {
 
     @Test
     public void testRequestMapping() throws Exception {
-        // TODO: Mock RandomTextImpl...
-
         mockMvc.perform(get("/api/generate"))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(contentType))

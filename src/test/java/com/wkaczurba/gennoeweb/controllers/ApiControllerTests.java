@@ -38,7 +38,6 @@ public class ApiControllerTests {
 
     @Test
     public void testRequestMapping() throws Exception {
-        // TODO: Mock RandomTextImpl...
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 
         mockMvc.perform(get("/api/generate"))
