@@ -29,23 +29,27 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">Fixed navbar</a>
+        <a class="navbar-brand" href="#">Gennoe</a>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Text generation<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="/mapgen">Map generation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Disabled</a>
                 </li>
             </ul>
+            <!-- SEARCH THING IF NEEDED...
             <form class="form-inline mt-2 mt-md-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </form> -->
         </div>
     </nav>
 
@@ -56,6 +60,37 @@
         </div>
         <p class="lead" th:text="${@environment.getProperty('gennoeweb.application.description')}">Generate anything.</p>
         <p th:text="${welcome}">Some welcome text here</p>.
+
+        <!-- TODO: Form with buttons: Letters, Digits, Special -->
+        <!-- TODO: Lookup forms in Bootstrap -->
+        <form>
+            <!-- TODO: consider removing dots next to li tags -->
+            <ul >
+                <!-- TODO: Add internationalization -->
+                <!-- TODO: Consider reworking into ul/li tags as menu bar is done -->
+                <li>
+                    <input type="checkbox" value="digits" placeholder="qwe">
+                    <span th:text="digits">Digits (1234567890)</span>
+                </li>
+                <li>
+                    <input type="checkbox" value="small_letters">
+                    <span th:text="small_letters">Small letters</span>
+                </li>
+
+                <li>
+                    <input type="checkbox" value="big_letters">
+                    <span th:text="big_letters">BIG LETTERS</span>
+                </li>
+
+                <li>
+                    <input type="checkbox" value="special" th:text="special_characters"/>
+                    <span th:text="special_characters">SPECIAL CHARACTERS</span>
+                </li>
+            </ul>
+
+            <!-- TODO: Rework it into button without submitting -->
+            <input type="submit" value="Send" /><br/>
+        </form>
         <p>Result of random code (Thymeleaf):
             <div>
                 <p th:text="${result}" >RANDOM_STUFF</p>
@@ -83,10 +118,16 @@
 
     <!-- It used th:src="@{/webjars/jquery/3.3.1/jquery.min.js}" but this file had different SRI than its equivalent on CDN,
          for more read: https://stackoverflow.com/questions/48820493/webjars-3-3-1-jquery-min-js-different-from-cdns-3-3-1-jquery-min-js-mismatchin -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-            integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+    <script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"
+            th:integrity='sha256-CIBz04B'
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+            integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
+            crossorigin="anonymous"></script>
 
     <!-- script>window.jQuery || document.write('script src="/webjars/jquery/3.3.1/jquery.min.js"\/script>')/script> -->
+    <!-- script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"><\/script>')</script -->
+    <!-- script th:text="window.jQuery || document.write('<script src=\\"https\\://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js\" integrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"><\\/script>')" -->
+    <!-- TODO: Rework this in Thymeleaf -->
     <script>window.jQuery || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"><\/script>')</script>
 
     <script th:src="@{/webjars/tether/1.4.3/dist/js/tether.min.js}"
